@@ -13,15 +13,15 @@ const App = () => {
    
  }
  function handleSubmit(){
-   setGraph({...graph,[name]:[]})
+   setGraph({...graph,[name]:[]});
+   
    
  }
  function handleSelect(e,name){
-
-  setGraph({...graph,[name]:[...graph[name],e.target.value]});
+  if(!graph[name].includes(e.target.value))
+ setGraph({...graph,[name]:[...graph[name],e.target.value]});
 
  }
- console.log(graph);
   return (
     <div style={{display:"flex",flexDirection:"row"}} id="container">
 <CreatePerson fun1={handleEvent} fun2={handleSubmit}/>
