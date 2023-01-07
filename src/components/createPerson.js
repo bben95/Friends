@@ -1,14 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-const createPerson = () => {
+const CreatePerson = (props) => {
+  
+  
+
+
   return (
+    
     <div>
     <p>Add People</p>
     <label>Enter Name :</label>
-    <input type="text"/>
-    <button>Add</button>
+    <input type="text" onChange={props.fun1}/>
+    <button onClick={props.fun2}>Add</button>
     </div>
   )
 }
 
-export default createPerson
+export default CreatePerson;

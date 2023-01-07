@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import CreatePerson from './components/CreatePerson';
+import PersonCard from './components/PersonCard';
 
-function App() {
+const App = () => {
+  const [name,setName]=useState("");
+  const [graph,setGraph]=useState({});
+
+  function handleEvent(e){
+    setName(e.target.value);
+   
+ }
+ function handleSubmit(){
+   setGraph({...graph,[name]:[]})
+   
+ }
+ function handleSelect(e,name){
+
+  setGraph({...graph,[name]:[...graph[name],e.target.value]});
+
+ }
+ console.log(graph);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+<CreatePerson fun1={handleEvent} fun2={handleSubmit}/>
+{Object.keys(graph).map((name)=>{
+  return <PersonCard name={name} arr={Object.keys(graph)} setFriend={handleSelect} friendArr={graph[name]}/>
+})}
+    </>
+    
+  )
 }
 
-export default App;
+export default App
